@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Bookers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <% if user_signed_in? %>
+              <%= link_to user_path(current_user.id), class: 'nav-item nav-link user_#{id}' do %>
+                <i class="material-icons md-18">home</i>
+                <span>Home</span>
+              <% end %>
+              <%= link_to users_path, class: 'nav-item nav-link users' do %>
+                <i class="material-icons md-18">people</i>
+                <span>Users</span>
+              <% end %>
+              <%= link_to books_path, class: 'nav-item nav-link books' do %>
+                <i class="material-icons md-18">book</i>
+                <span>Books</span>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-item nav-link logout' do %>
+                <i class="material-icons md-18">forward</i>
+                <span>Log out</span>
+              <% end %>
+            <% else %>
+              <%= link_to home_path, class: 'nav-item nav-link home' do %>
+                <i class="material-icons md-18">home</i>
+                <span>Home</span>
+              <% end %>
+              <%= link_to home_about_path, class: 'nav-item nav-link about' do %>
+                <i class="material-icons md-18">opacity</i>
+                <span>About</span>
+              <% end %>
+              <%= link_to new_user_registration_path, class: 'nav-item nav-link sign_up' do %>
+                <i class="material-icons md-18">border_color</i>
+                <span>Sign Up</span>
+              <% end %>
+              <%= link_to new_user_session_path, class: 'nav-item nav-link sign_in' do %>
+                <i class="material-icons md-18">input</i>
+                <span>Log in</span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-4">
+            <p>© 2018 Copyright Text</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

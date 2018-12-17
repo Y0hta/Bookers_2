@@ -1,0 +1,31 @@
+<%= flash[:notice] %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <%= render "layouts/sidelist", user: @user, book: @book_ %>
+    </div>
+    <div class="col-9">
+      <h2>Books</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag @user, :image,  :fill, 30, 30, fallback: "no_image.jpg" %></td>
+              <td><%= link_to book_path(book), class: "book_#{book}" do  %>
+                <p class="book-title"><%= book.title %></p>
+              <% end %></td>
+              <td><p class="book-body"><%= book.body %></p></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

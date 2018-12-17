@@ -1,0 +1,44 @@
+<div class="user_info">
+  <h2>User Info</h2>
+  <%= attachment_image_tag user, :image,  :fill, 100, 100, fallback: "no_image.jpg" %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td><p class="user-name"><%= user.username %></p></td>
+      </tr>
+      <tr>
+        <td>Introduction</td>
+        <td><p class="user-introduction"><%= user.introduction %></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <% if user == current_user %>
+    <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-dark edit_user_#{user.id}" %>
+  <% end %>
+</div>
+
+<div class="create_book mt-3">
+  <h2>New Book</h2>
+
+  <!-- form_for section -->
+  <%= form_for(book) do |f| %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, class: "book_title" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :opinion %><br />
+      <%= f.text_field :body, class: "book_body" %>
+    </div>
+
+    <% if user == current_user %>
+    <div class="actions pt-3">
+      <%= f.submit "Create Book", class: "btn btn-secondary btn-md btn-blcok" %>
+    </div>
+    <% end %>
+  <% end %>
+  <!-- form_for section end -->
+</div>

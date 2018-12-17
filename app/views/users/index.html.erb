@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <%= render "layouts/sidelist", user: @user, book: @book %>
+    </div>
+    <div class="col-9">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag user, :image,  :fill, 30, 30, fallback: "no_image.jpg" %></td>
+              <td><p class="user-name"><%= user.username %></p></td>
+              <td><%= link_to "Show", user_path(user), class: "btn btn-secondary user_#{user}" %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
