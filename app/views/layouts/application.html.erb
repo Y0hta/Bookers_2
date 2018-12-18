@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <% if user_signed_in? %>
-              <%= link_to user_path(current_user.id), class: 'nav-item nav-link user_#{current_user.id}' do %>
+              <%= link_to user_path(current_user.id), class: 'nav-item nav-link home' do %>
                 <i class="material-icons md-18">home</i>
                 <span>Home</span>
               <% end %>
