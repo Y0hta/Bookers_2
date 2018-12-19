@@ -17,13 +17,13 @@
         <tbody>
           <tr>
             <td><%= attachment_image_tag @user, :image,  :fill, 30, 30, fallback: "no_image.jpg" %></td>
-            <td><%= link_to book_path(@book), class: "book_#{@book}" do  %>
+            <td><%= link_to book_path(@book), class: "book_#{@book.id}" do  %>
               <p class="book-title"><%= @book.title %></p>
             <% end %></td>
             <td><p class="book-body"><%= @book.body %></p></td>
             <% if @book.user == current_user %>
-              <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-info edit_book_#{@book}" %></td>
-              <td><%= link_to "Destroy", book_path(@book), method: :delete,  class: "btn btn-danger destroy_book_#{@book}", "data-confirm" => "Are you sure?" %></td>
+              <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-info edit_book_#{@book.id}" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete,  class: "btn btn-danger destroy_book_#{@book.id}", "data-confirm" => "Are you sure?" %></td>
             <% end %>
           </tr>
         </tbody>
